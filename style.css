@@ -4,6 +4,9 @@
 }
 body{
     background-color: #622EFF;
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
 }
 nav{
     background-color: aliceblue;
@@ -15,7 +18,8 @@ nav{
 h1{
     text-align: center;
     margin-top: 20px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
 }
 /* === Footer Styling === */
 
@@ -23,17 +27,15 @@ h1{
     background-color: #2c3e50; /* Dark blue/grey background */
     color: #ecf0f1;           /* Light text color */
     padding-top: 40px;
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif; 
 }
 
 .footer-container {
     display: flex;
     flex-wrap: wrap; /* Allows sections to stack on smaller screens */
     justify-content: space-around;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    padding-bottom: 30px;
 }
 
 .footer-section {
@@ -289,14 +291,61 @@ h1{
     font-size: 0.9rem;
     color: #95a5a6;
 }
-.card-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin : 20px;
-    gap : 30px;
+#card-box1{
+    margin: 100px;
 }
-.card{
+.questionbox{
+    height: 120px;
+    width: 500px;
+   border: #000000 3px solid;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 13px;
+    font-weight: 400;
+    background-color: #95a5a6;
+    border-radius: 18px;
+}
+
+.form-check {
+  padding: 1rem 1.25rem;
+  margin-bottom: 10px;
+  border: 2px solid #eee;
+  border-radius: 0.5rem; 
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  cursor: pointer;
+  width: 300px;
+  height: 50px;
+  padding: 10px;
+  text-align: center;
+}
+
+
+.form-check:hover {
+  background-color: #f8f9fa; 
+  border-color: #d8dde2;
+}
+
+
+.form-check:has(.form-check-input:checked) {
+  background-color: #e7f3ff; 
+  border-color: #0d6efd;  
+}
+
+
+.form-check:has(.form-check-input:checked) .form-check-label {
+  font-weight: bold;
+  color: #0a58ca; 
+}
+
+
+.form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+.radio-container{
+    display: flex;
+    margin-top: 17px;
+    flex-direction: column;
     align-items: center;
 }
