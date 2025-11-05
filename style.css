@@ -1,171 +1,76 @@
-*{
-    padding: 0%;
-    margin: 0%;
-}
-body{
-    background-color: #622EFF;
-    box-sizing: border-box;
-    padding: 0%;
-    margin: 0%;
-}
-nav{
-    background-color: aliceblue;
-} 
-.nav-links ul{
-    list-style-type: none;
-    flex-direction: row;
-}
-h1{
-    text-align: center;
-    margin-top: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-}
-/* === Footer Styling === */
-
-.site-footer {
-    background-color: #2c3e50; /* Dark blue/grey background */
-    color: #ecf0f1;           /* Light text color */
-    padding-top: 40px;
-    font-family: Arial, sans-serif; 
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap; /* Allows sections to stack on smaller screens */
-    justify-content: space-around;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-section {
-    flex: 1; /* Each section tries to take equal space */
-    min-width: 250px; /* Ensures sections don't get too small */
-    margin: 20px;
-}
-
-.footer-section h3 {
-    color: #ffffff; /* White heading */
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #3498db; /* Blue accent line */
-    padding-bottom: 10px;
-    display: inline-block;
-}
-
-/* --- Newsletter Section --- */
-.footer-newsletter p {
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.newsletter-form {
-    display: flex;
-}
-
-.newsletter-form input[type="email"] {
-    flex: 1; /* Input field takes available space */
-    padding: 12px;
-    border: none;
-    border-radius: 5px 0 0 5px; /* Rounded on the left */
-    font-size: 1rem;
-    outline: none;
-}
-
-.newsletter-form button {
-    padding: 12px 20px;
-    border: none;
-    background-color: #3498db; /* Blue button */
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 0 5px 5px 0; /* Rounded on the right */
-    transition: background-color 0.3s ease;
-}
-
-.newsletter-form button:hover {
-    background-color: #2980b9; /* Darker blue on hover */
-}
-
-/* --- Links Section --- */
-.footer-links ul {
-    list-style-type: none;
+/* === Global Reset & Body === */
+* {
     padding: 0;
-}
-
-.footer-links li {
-    margin-bottom: 10px;
-}
-
-.footer-links a {
-    color: #ecf0f1;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #3498db; /* Blue hover color */
-    text-decoration: underline;
-}
-
-/* --- Social Section --- */
-.social-icons a {
-    color: #ecf0f1;
-    text-decoration: none;
-    margin-right: 15px;
-    font-size: 1.1rem;
-}
-
-.social-icons a:hover {
-    color: #3498db;
-}
-
-/* --- Copyright Bar --- */
-.footer-copyright {
-    background-color: #233140; /* Even darker background for the bottom bar */
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
-    border-top: 1px solid #444;
-}
-
-.footer-copyright p {
     margin: 0;
-    font-size: 0.9rem;
-    color: #95a5a6; /* Grey color for copyright */
+    box-sizing: border-box;
 }
-.card-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin : 20px;
-    gap : 30px;
-}
-.card{
-    align-items: center;
-}
-*{
-    padding: 0%;
-    margin: 0%;
-}
-body{
+
+body {
     background-color: #622EFF;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
 }
-nav{
-    background-color: aliceblue;
-} 
-.nav-links ul{
-    list-style-type: none;
-    flex-direction: row;
-}
-h1{
+
+h1 {
     text-align: center;
     margin-top: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+    color: #fff;
 }
 
+/* === Navbar === */
+nav {
+    background-color: aliceblue;
+}
+
+.nav-links ul {
+    list-style-type: none;
+    flex-direction: row;
+}
+
+/* === Theme Switch Button === */
+#theme-switch {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 8px;
+}
+#theme-switch svg {
+    fill: #2c3e50;
+}
+#theme-switch .sun-icon { display: none; }
+#theme-switch .moon-icon { display: block; }
+
+
+/* === Homepage Card Container === */
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch; /* <-- THIS WAS THE FIX (was 'center') */
+    justify-content: center; 
+    margin: 20px;
+    gap: 30px;
+}
+
+.card {
+    align-items: center;
+    width: 18rem; /* Set a consistent width here */
+}
+
+/* === Quiz Page === */
 #timer {
     font-size: 2.5rem;
     font-weight: bold;
@@ -181,11 +86,108 @@ h1{
     border: #ffffff 2px solid;
 }
 
+.questionbox {
+    height: 120px;
+    width: 90%;
+    max-width: 500px; /* Made responsive */
+    border: #000000 3px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Changed from align-content */
+    padding: 13px;
+    font-weight: 400;
+    background-color: #95a5a6;
+    color: #000;
+    border-radius: 18px;
+}
+
+.radio-container {
+    display: flex;
+    margin-top: 17px;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* === RADIO BUTTON FIX === */
+.form-check {
+    padding: 10px 1.25rem;
+    margin-bottom: 10px;
+    border: 2px solid #eee;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    cursor: pointer;
+    width: 90%;
+    max-width: 300px;
+    height: auto;
+    
+    display: flex;         
+    align-items: center;   /* Vertically aligns the dot and text */
+}
+
+.form-check-input {
+    position: static;
+    float: none;
+    margin-left: 0 !important;  /* Override Bootstrap */
+    margin-right: 10px;
+}
+
+.form-check-label-text {
+    flex-grow: 1;         
+    text-align: center;   
+}
+/* === END FIX === */
+
+
+.form-check:hover {
+    background-color: #f8f9fa;
+    border-color: #d8dde2;
+}
+
+.form-check:has(.form-check-input:checked) {
+    background-color: #e7f3ff;
+    border-color: #0d6efd;
+}
+
+.form-check:has(.form-check-input:checked) .form-check-label-text {
+    font-weight: bold;
+    color: #0a58ca; 
+}
+
+.form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+/* === Quiz Navigation & Results === */
+#button-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 300px;
+    margin: 20px auto 0;
+}
+
+#results-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+#results-container h1, #results-container h2 {
+    color: #000;
+}
+
+
+/* === Footer === */
 .site-footer {
     background-color: #2c3e50;
     color: #ecf0f1;
     padding-top: 40px;
     font-family: Arial, sans-serif;
+    margin-top: 50px;
 }
 
 .footer-container {
@@ -194,8 +196,7 @@ h1{
     justify-content: space-around;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-    padding-bottom: 30px;
+    padding: 0 20px 30px;
 }
 
 .footer-section {
@@ -291,61 +292,73 @@ h1{
     font-size: 0.9rem;
     color: #95a5a6;
 }
-#card-box1{
-    margin: 100px;
-}
-.questionbox{
-    height: 120px;
-    width: 500px;
-   border: #000000 3px solid;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    padding: 13px;
-    font-weight: 400;
-    background-color: #95a5a6;
-    border-radius: 18px;
+
+
+/* === 🌑 DARK MODE STYLES 🌑 === */
+body.darkmode {
+    background-color: #1a1a2e;
+    color: #ecf0f1;
 }
 
-.form-check {
-  padding: 1rem 1.25rem;
-  margin-bottom: 10px;
-  border: 2px solid #eee;
-  border-radius: 0.5rem; 
-  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-  cursor: pointer;
-  width: 300px;
-  height: 50px;
-  padding: 10px;
-  text-align: center;
+.darkmode h1 {
+    color: #ecf0f1;
 }
 
-
-.form-check:hover {
-  background-color: #f8f9fa; 
-  border-color: #d8dde2;
+.darkmode .navbar {
+    background-color: #2c3e50 !important;
 }
 
-
-.form-check:has(.form-check-input:checked) {
-  background-color: #e7f3ff; 
-  border-color: #0d6efd;  
+.darkmode .card {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    border: 1px solid #444;
 }
 
-
-.form-check:has(.form-check-input:checked) .form-check-label {
-  font-weight: bold;
-  color: #0a58ca; 
+.darkmode .card-title, .darkmode .card-text {
+    color: #ecf0f1;
 }
 
-
-.form-check-input:checked {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+.darkmode #theme-switch {
+    background: #2c3e50;
+    border: 1px solid #555;
 }
-.radio-container{
-    display: flex;
-    margin-top: 17px;
-    flex-direction: column;
-    align-items: center;
+.darkmode #theme-switch svg {
+    fill: #ecf0f1;
+}
+.darkmode #theme-switch .sun-icon { display: block; }
+.darkmode #theme-switch .moon-icon { display: none; }
+
+.darkmode .questionbox {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    border-color: #555;
+}
+
+.darkmode .form-check {
+    background-color: #2c3e50;
+    border-color: #555;
+    color: #ecf0f1;
+}
+
+.darkmode .form-check:hover {
+    background-color: #3b4f63;
+    border-color: #777;
+}
+
+.darkmode .form-check:has(.form-check-input:checked) {
+    background-color: #0a58ca;
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+.darkmode .form-check:has(.form-check-input:checked) .form-check-label-text {
+    color: #fff;
+}
+
+.darkmode #results-container {
+    background-color: #2c3e50;
+}
+
+.darkmode #results-container h1, .darkmode #results-container h2 {
+    color: #ecf0f1;
 }
