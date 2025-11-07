@@ -5,7 +5,6 @@ let timerId;
 document.addEventListener('DOMContentLoaded', () => {
     const timerElement = document.getElementById('timer');
     
-    // Only run the timer if the timer element exists on the page
     if (timerElement) {
         let timeLeft = 600; // 10 minutes
         
@@ -13,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (timeLeft <= 0) {
                 clearInterval(timerId);
                 timerElement.textContent = "0:00";
-                // Automatically submit or show results when time is up
                 showResults(); 
             } else {
                 const minutes = Math.floor(timeLeft / 60);
@@ -29,10 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// --- QUIZ LOGIC ---
 const quizContainer = document.getElementById('quiz-container');
 
-// Only run this code if we are on the quiz page
 if (quizContainer) {
     const questionNumber = document.getElementById('question-number');
     const questionText = document.getElementById('question-text');
@@ -43,7 +39,6 @@ if (quizContainer) {
     const resultsContainer = document.getElementById('results-container');
     const scoreText = document.getElementById('score-text');
 
-    // --- Questions Data ---
     const questions = [
         {
             question: "Who directed the 1994 film 'Pulp Fiction'?",
@@ -79,13 +74,12 @@ if (quizContainer) {
         const q = questions[index];
         questionNumber.textContent = `QUESTION NUMBER ${index + 1}`;
         questionText.textContent = q.question;
-        optionsContainer.innerHTML = ""; // Clear old options
+        optionsContainer.innerHTML = "";
 
-        // Create radio buttons for options
+      
         q.options.forEach((option, i) => {
-            // *** CHANGE HERE ***
-            // The outer element is now a <label> with the .form-check class.
-            // The 'for' attribute links the whole label to the input.
+           
+
             optionsContainer.innerHTML += `
                 <label class="form-check" for="option${i}">
                     <input class="form-check-input" type="radio" name="quizOption" id="option${i}" value="${option}">
@@ -94,16 +88,12 @@ if (quizContainer) {
                     </span>
                 </label>
             `;
-            // *** END CHANGE ***
+            
         });
 
-        // Re-select user's previous answer if they are navigating back
-        if (userAnswers[index]) {
-            document.querySelector(`input[value="${userAnswers[index]}"]`).checked = true;
-        }
+       
 
-        // --- Button Visibility ---
-        // Show/Hide Previous Button
+      
         prevBtn.style.display = (index === 0) ? 'none' : 'inline-block';
         
         // If it's the last question, show Submit and hide Next
@@ -124,7 +114,7 @@ if (quizContainer) {
     }
 
     function showResults() {
-        // Stop the timer
+
         clearInterval(timerId);
 
         let score = 0;
@@ -134,14 +124,14 @@ if (quizContainer) {
             }
         });
 
-        // Display score
+        
         scoreText.textContent = `Your score: ${score} / ${questions.length}`;
         quizContainer.style.display = 'none';
         document.getElementById('timer').style.display = 'none';
         resultsContainer.style.display = 'block';
     }
 
-    // --- Event Listeners ---
+    
     nextBtn.addEventListener('click', () => {
         saveAnswer();
         if (currentQuestionIndex < questions.length - 1) {
@@ -163,13 +153,12 @@ if (quizContainer) {
         showResults();
     });
 
-    // Initial load
+    
     loadQuestion(currentQuestionIndex);
 }
 
 
-// --- DARK MODE SWITCHER (Global) ---
-// This will run on every page
+
 let darkmode = localStorage.getItem('darkmode');
 const themeSwitch = document.getElementById('theme-switch');
 
@@ -183,12 +172,11 @@ const disableDarkmode = () => {
   localStorage.setItem('darkmode', null);
 }
 
-// Set initial state
+
 if(darkmode === "active") {
     enableDarkmode();
 }
 
-// Add listener to button
 themeSwitch.addEventListener("click", () => {
   darkmode = localStorage.getItem('darkmode');
   darkmode !== "active" ? enableDarkmode() : disableDarkmode();
